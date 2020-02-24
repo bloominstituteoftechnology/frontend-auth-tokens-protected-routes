@@ -9,21 +9,16 @@ export default function Quotes() {
   const [currentQuoteId, setCurrentQuoteId] = useState(null)
 
   const getAllQuotes = () => {
-    // 1- We need to fetch all quotes making a [GET
-    // request to the quotesURL. On success we should
-    // put the quotes inside the `quotes` slice of state.
-
     axios.get(quotesURL)
       .then(response => {
         setQuotes(response.data)
       })
       .catch(error => {
-        console.error(error)
+        debugger
       })
   }
 
   useEffect(() => {
-    // 2- Mmmm. What should happen in here?
     getAllQuotes()
   }, [])
 
