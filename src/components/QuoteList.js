@@ -23,14 +23,14 @@ export default function Quotes() {
   }, [])
 
   const getCurrentQuote = () => {
-    // 3- We need a utility function that can look at the
+    // We need a utility function that can look at the
     // `currentQuoteId` and fish out the complete quote
     // object from the `quotes` slice of state
     return quotes.find(quote => quote.id === currentQuoteId)
   }
 
   const updateQuote = ({ id, text, author }) => {
-    // 4- we need to hit the quotesURL with a PUT request.
+    // We need to hit the quotesURL with a PUT request.
     // the id of the quote that needs replacing will go
     // at the end of the url (don't forget the forward slash)
     // The payload of the request will be both `text` and `author`.
@@ -47,7 +47,7 @@ export default function Quotes() {
   }
 
   const deleteQuote = (id) => {
-    // 5- we need to hit the quotesURL with a DELETE request.
+    // We need to hit the quotesURL with a DELETE request.
     // the id of the quote that needs deleting will go
     // at the end of the url (don't forget the forward slash)
     // On success we show the updated quotes WITHOUT REFETCHING
@@ -77,8 +77,7 @@ export default function Quotes() {
       {
         currentQuoteId &&
         <Formik
-          // 6- Mmm. we need a special prop to re-mount the Formik
-          // component whenever the `currentQuoteId` changes
+          // If the key of a component changes, the component is re-mounted
           key={currentQuoteId}
           initialValues={{
             text: getCurrentQuote().text,
@@ -91,18 +90,21 @@ export default function Quotes() {
               author,
             })
           }}
-          render={() => (
-            <Form>
-              <Field name='text' />
-              <ErrorMessage name='text' component='span' />
+        >
+          {
+            () => (
+              <Form>
+                <Field name='text' />
+                <ErrorMessage name='text' component='span' />
 
-              <Field name='author' />
-              <ErrorMessage name='author' component='span' />
+                <Field name='author' />
+                <ErrorMessage name='author' component='span' />
 
-              <input type='submit' />
-            </Form>
-          )}
-        />
+                <input type='submit' />
+              </Form>
+            )
+          }
+        </Formik>
       }
     </div>
   )
