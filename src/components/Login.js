@@ -12,7 +12,7 @@ export default function Login(props) {
       onSubmit={onLogin}
     >
       {
-        () => (
+        props => (
           <Form className='login'>
             <Field name='username' type="text" placeholder='username' />
             <Field name='password' type="text" placeholder='password' />

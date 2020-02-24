@@ -37,7 +37,7 @@ export default function Quotes() {
     // On success we should make the form disappear and fetch all quotes.
     axios.put(`${quotesURL}/${id}`, { text, author })
       .then(res => {
-        setCurrentQuoteId(null)
+        setCurrentQuoteId(null) // very prudent
         getAllQuotes()
       })
       .catch(error => {
@@ -53,7 +53,7 @@ export default function Quotes() {
     // On success we show the updated quotes WITHOUT REFETCHING
     axios.delete(`${quotesURL}/${id}`)
       .then(response => {
-        setCurrentQuoteId("") // very prudent
+        setCurrentQuoteId(null) // very prudent
         setQuotes(quotes.filter(quote => quote.id !== id))
       })
       .catch(error => {
@@ -68,8 +68,8 @@ export default function Quotes() {
           quotes.map(q => (
             <li key={q.id}>
               <div>{q.text} ({q.author})</div>
-              <button onClick={() => setCurrentQuoteId(q.id)}>edit</button>
-              <button onClick={() => deleteQuote(q.id)}>del</button>
+              <button onClick={evt => setCurrentQuoteId(q.id)}>edit</button>
+              <button onClick={evt => deleteQuote(q.id)}>del</button>
             </li>
           ))
         }
@@ -92,7 +92,7 @@ export default function Quotes() {
           }}
         >
           {
-            () => (
+            props => (
               <Form>
                 <Field name='text' />
                 <ErrorMessage name='text' component='span' />
