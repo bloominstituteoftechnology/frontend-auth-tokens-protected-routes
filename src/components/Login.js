@@ -10,13 +10,16 @@ export default function Login(props) {
     <Formik
       initialValues={{ username: '', password: '' }}
       onSubmit={onLogin}
-      render={() => (
-        <Form className='login'>
-          <Field name='username' type="text" placeholder='username' />
-          <Field name='password' type="text" placeholder='password' />
-          <input type='submit' />
-        </Form>
-      )}
-    />
+    >
+      {
+        () => (
+          <Form className='login'>
+            <Field name='username' type="text" placeholder='username' />
+            <Field name='password' type="text" placeholder='password' />
+            <input type='submit' />
+          </Form>
+        )
+      }
+    </Formik>
   )
 }
