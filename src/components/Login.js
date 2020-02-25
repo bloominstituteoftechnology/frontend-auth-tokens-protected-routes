@@ -11,7 +11,8 @@ export default function Login(props) {
       { username, password }
     )
       .then(res => {
-        // please redirect me to home page
+        // please handle the token somehow
+        // and redirect me to home page
       })
       .catch(error => {
         debugger
