@@ -15,13 +15,9 @@ export function Container(props) {
       </nav>
 
       <main>
-        <Route path='/login'>
-          <Login />
-        </Route>
+        <Route path='/login' component={Login} />
 
-        <Route exact path='/'>
-          <Quotes />
-        </Route>
+        <Route exact path='/' component={Quotes} />
       </main>
     </div>
   )
