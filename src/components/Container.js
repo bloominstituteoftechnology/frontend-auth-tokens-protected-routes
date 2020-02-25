@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, NavLink, withRouter } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import Login from './Login'
 import Quotes from './QuoteList'
 
@@ -29,4 +29,4 @@ export function Container(props) {
   )
 }
 
-export default withRouter(Container)
+export default Container
