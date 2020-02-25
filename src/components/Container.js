@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, NavLink, Redirect } from 'react-router-dom'
+import { Route, NavLink, Redirect, withRouter } from 'react-router-dom'
 import Login from './Login'
 import Quotes from './QuoteList'
 
@@ -24,18 +24,18 @@ export function Container(props) {
         unless there is a token in local storage */}
         {/* <Route exact path='/' component={Quotes} /> */}
 
-        <Route exact path='/'>
+        <RouteProtected exact path='/'>
           <Quotes />
-        </Route>
+        </RouteProtected>
       </main>
     </div>
   )
 }
 
 function RouteProtected({ children, ...rest }) {
-  debugger
   // pull token from local storage
-  const tokenExists = !!localStorage.getItem('token')
+  debugger
+  const tokenExists = localStorage.getItem('token')
   return (
     <Route {...rest}>
       {
@@ -47,4 +47,4 @@ function RouteProtected({ children, ...rest }) {
   )
 }
 
-export default Container
+export default withRouter(Container)
