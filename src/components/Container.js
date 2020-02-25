@@ -15,15 +15,13 @@ export function Container(props) {
       </nav>
 
       <main>
-        <Route
-          path='/login'
-          component={Login}
-        />
-        <Route
-          exact
-          path='/'
-          component={Quotes}
-        />
+        <Route path='/login'>
+          <Login />
+        </Route>
+
+        <Route exact path='/'>
+          <Quotes />
+        </Route>
       </main>
     </div>
   )
