@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Quotes from './QuoteList'
 
@@ -32,13 +32,18 @@ export function Container(props) {
   )
 }
 
-function RouteProtected(props) {
+function RouteProtected({ children, ...rest }) {
   // pull token from local storage
-  // return a "vanilla" Route component
-  // inside it, build a ternary:
-  // token truthy ? render what you were gonna
-  // otherwise render a <Redirect to='login' />
-  return ()
+  const tokenExists = !!localStorage.getItem('token')
+  return (
+    <Route {...rest}>
+      {
+        tokenExists
+          ? children
+          : <Redirect to='/login' />
+      }
+    </Route>
+  )
 }
 
 export default Container
