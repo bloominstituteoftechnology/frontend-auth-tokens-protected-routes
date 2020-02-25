@@ -13,6 +13,8 @@ export default function Login(props) {
       .then(res => {
         // please handle the token somehow
         // and redirect me to home page
+        // let's put the token in local storage usi
+        localStorage.setItem('token', res.data.token)
       })
       .catch(error => {
         debugger

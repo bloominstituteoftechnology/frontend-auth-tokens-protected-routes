@@ -17,6 +17,8 @@ export function Container(props) {
       <main>
         <Route path='/login' component={Login} />
 
+        {/* we need to fix this so we can't do this route
+        unless there is a token in local storage */}
         <Route exact path='/' component={Quotes} />
       </main>
     </div>
