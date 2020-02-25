@@ -1,9 +1,21 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
+import axios from 'axios'
+
+const loginURL = 'http://localhost:3333/login'
 
 export default function Login(props) {
   const onLogin = ({ username, password }) => {
-    return props.onLogin({ username, password })
+    axios.post(
+      loginURL,
+      { username, password }
+    )
+      .then(res => {
+        props.history.push('/')
+      })
+      .catch(error => {
+        debugger
+      })
   }
 
   return (
