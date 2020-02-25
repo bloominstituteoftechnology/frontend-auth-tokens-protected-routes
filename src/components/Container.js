@@ -34,7 +34,6 @@ export function Container(props) {
 
 function RouteProtected({ children, ...rest }) {
   // pull token from local storage
-  debugger
   const tokenExists = localStorage.getItem('token')
   return (
     <Route {...rest}>
