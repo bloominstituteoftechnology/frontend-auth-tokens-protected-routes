@@ -16,7 +16,7 @@ export function Container(props) {
 
       <main>
         <Route path='/login'>
-          <Login />
+          <Login friend='gabe' />
         </Route>
 
         <Route exact path='/'>
