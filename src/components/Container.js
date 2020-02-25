@@ -24,15 +24,16 @@ export function Container(props) {
         unless there is a token in local storage */}
         {/* <Route exact path='/' component={Quotes} /> */}
 
-        <RouteProtected exact path='/'>
+        <Route exact path='/'>
           <Quotes />
-        </RouteProtected>
+        </Route>
       </main>
     </div>
   )
 }
 
 function RouteProtected({ children, ...rest }) {
+  debugger
   // pull token from local storage
   const tokenExists = !!localStorage.getItem('token')
   return (
