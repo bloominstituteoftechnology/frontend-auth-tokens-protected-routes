@@ -24,7 +24,9 @@ export function Container(props) {
         unless there is a token in local storage */}
         {/* <Route exact path='/' component={Quotes} /> */}
 
-        
+        <Route exact path='/'>
+          <Quotes />
+        </Route>
       </main>
     </div>
   )
