@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import axios from 'axios'
+import axios from '../axiosWithAuth'
 
 const quotesURL = 'http://localhost:3333/api/quotes'
 
@@ -9,7 +9,7 @@ export default function Quotes() {
   const [currentQuoteId, setCurrentQuoteId] = useState(null)
 
   const getAllQuotes = () => {
-    axios.get(quotesURL)
+    axios().get(quotesURL) // the replacement axios is a bit diff and has to be invoked
       .then(response => {
         setQuotes(response.data)
       })
@@ -35,7 +35,7 @@ export default function Quotes() {
     // at the end of the url (don't forget the forward slash)
     // The payload of the request will be both `text` and `author`.
     // On success we should make the form disappear and fetch all quotes.
-    axios.put(`${quotesURL}/${id}`, { text, author })
+    axios().put(`${quotesURL}/${id}`, { text, author }) // the replacement axios is a bit diff and has to be invoked
       .then(res => {
         setCurrentQuoteId(null) // very prudent
         getAllQuotes()
@@ -51,7 +51,7 @@ export default function Quotes() {
     // the id of the quote that needs deleting will go
     // at the end of the url (don't forget the forward slash)
     // On success we show the updated quotes WITHOUT REFETCHING
-    axios.delete(`${quotesURL}/${id}`)
+    axios().delete(`${quotesURL}/${id}`) // the replacement axios is a bit diff and has to be invoked
       .then(response => {
         setCurrentQuoteId(null) // very prudent
         setQuotes(quotes.filter(quote => quote.id !== id))
