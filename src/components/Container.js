@@ -22,7 +22,9 @@ export function Container(props) {
 
         {/* we need to fix this so we can't do this route
         unless there is a token in local storage */}
-        <Route exact path='/' component={Quotes} />
+        {/* <Route exact path='/' component={Quotes} /> */}
+
+        
       </main>
     </div>
   )
