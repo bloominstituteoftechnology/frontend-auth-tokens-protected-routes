@@ -15,7 +15,10 @@ export function Container(props) {
       </nav>
 
       <main>
-        <Route path='/login' component={Login} />
+        {/* <Route path='/login' component={Login} /> */}
+        <Route path='/login'>
+          <Login foo='bar' />
+        </Route>
 
         {/* we need to fix this so we can't do this route
         unless there is a token in local storage */}
