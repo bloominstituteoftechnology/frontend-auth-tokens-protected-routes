@@ -24,12 +24,21 @@ export function Container(props) {
         unless there is a token in local storage */}
         {/* <Route exact path='/' component={Quotes} /> */}
 
-        <Route exact path='/'>
+        <RouteProtected exact path='/'>
           <Quotes />
-        </Route>
+        </RouteProtected>
       </main>
     </div>
   )
+}
+
+function RouteProtected(props) {
+  // pull token from local storage
+  // return a "vanilla" Route component
+  // inside it, build a ternary:
+  // token truthy ? render what you were gonna
+  // otherwise render a <Redirect to='login' />
+  return ()
 }
 
 export default Container
