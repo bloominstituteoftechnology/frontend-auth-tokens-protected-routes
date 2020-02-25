@@ -11,10 +11,10 @@ export default function Login(props) {
       { username, password }
     )
       .then(res => {
-        // please handle the token somehow
-        // and redirect me to home page
         // let's put the token in local storage usi
         localStorage.setItem('token', res.data.token)
+        // let's handle the redirect to "/"
+        props.history.push('/')
       })
       .catch(error => {
         debugger
